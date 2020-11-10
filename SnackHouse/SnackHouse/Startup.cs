@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SnackHouse.Data;
 
 namespace SnackHouse
 {
@@ -24,6 +21,9 @@ namespace SnackHouse
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //Informando a classe DBCONtext utilizada e o provedor do banco
+            services.AddDbContext<SnackHouseDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
