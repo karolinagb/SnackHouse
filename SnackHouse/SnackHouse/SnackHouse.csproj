@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Compile Remove="Migrations\20201110144344_PrimeiroModeloDados.cs" />
+    <Compile Remove="Migrations\20201110144344_PrimeiroModeloDados.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

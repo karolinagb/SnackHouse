@@ -2,7 +2,7 @@
 
 namespace SnackHouse.Migrations
 {
-    public partial class PrimeiroModeloDados : Migration
+    public partial class PrimeroModeloDados : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace SnackHouse.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    CategoryName = table.Column<string>(maxLength: 100, nullable: true),
+                    Description = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,12 +26,12 @@ namespace SnackHouse.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    SmallDescription = table.Column<string>(nullable: true),
-                    LongDescription = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    SmallDescription = table.Column<string>(maxLength: 100, nullable: true),
+                    LongDescription = table.Column<string>(maxLength: 255, nullable: true),
                     Price = table.Column<decimal>(nullable: false),
-                    ImgUrl = table.Column<string>(nullable: true),
-                    ImgThumbnailUrl = table.Column<string>(nullable: true),
+                    ImgUrl = table.Column<string>(maxLength: 200, nullable: true),
+                    ImgThumbnailUrl = table.Column<string>(maxLength: 200, nullable: true),
                     IsPreferSnack = table.Column<bool>(nullable: false),
                     InStock = table.Column<bool>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
