@@ -27,7 +27,8 @@ namespace SnackHouse.Repositories
 
         ICollection<Snack> ISnackRepository.PreferSnacks()
         {
-            return _snackHouseDbContext.Snacks.Where(snack => snack.IsPreferSnack == true).ToList();
+            return _snackHouseDbContext.Snacks.Where(snackP =>
+            snackP.IsPreferSnack == true).Include(snackP => snackP.Category).ToList();
         }
     }
 }
