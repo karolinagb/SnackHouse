@@ -1,0 +1,17 @@
+﻿@* Informando o tipo que vamos receber na view (fortemente tipada) *@
+@model IEnumerable<SnackHouse.Models.Snack>
+
+@{ 
+    ViewData["Title"] = "Lanches disponíveis";
+}
+
+<div><h2>@ViewData["Title"]</h2></div>
+
+@foreach (var snack in Model)
+{
+    <div>
+        <h4>Lanche: @snack.Name</h4>
+        <p><img src="~/img/snacks/@snack.ImgUrl"/></p>
+        <p>Preço: @snack.Price.ToString("c")</p>
+    </div>
+}
