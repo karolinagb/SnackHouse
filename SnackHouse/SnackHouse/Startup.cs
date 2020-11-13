@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SnackHouse.Data;
+using SnackHouse.Repositories;
 
 namespace SnackHouse
 {
@@ -24,6 +25,9 @@ namespace SnackHouse
             //Informando a classe DBCONtext utilizada e o provedor do banco
             services.AddDbContext<SnackHouseDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ISnackRepository, SnackRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
