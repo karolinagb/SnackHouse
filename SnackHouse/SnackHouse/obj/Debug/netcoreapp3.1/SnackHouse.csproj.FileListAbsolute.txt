@@ -147,3 +147,4 @@ C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\tr\Microsof
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Snacks\FindAll.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SnackResumePartialView.cshtml.g.cs

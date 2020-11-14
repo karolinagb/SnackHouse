@@ -1,17 +1,12 @@
 ﻿@* Informando o tipo que vamos receber na view (fortemente tipada) *@
-@model IEnumerable<SnackHouse.Models.Snack>
+@model SnackListViewModel
 
-@{ 
-    ViewData["Title"] = "Lanches disponíveis";
-}
+<div><h2>@Model.Category</h2></div>
 
-<div><h2>@ViewData["Title"]</h2></div>
-
-@foreach (var snack in Model)
-{
-    <div>
-        <h4>Lanche: @snack.Name</h4>
-        <p><img src="~/img/snacks/@snack.ImgUrl"/></p>
-        <p>Preço: @snack.Price.ToString("c")</p>
-    </div>
-}
+<div class="row">
+    @foreach (var snack in Model.Snacks)
+    {
+        @*Renderizando a PartialView*@
+        await Html.RenderPartialAsync("_SnackResumePartialView", snack);
+    }
+</div>

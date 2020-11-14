@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SnackHouse.Models.ViewModels;
 using SnackHouse.Repositories;
 
 namespace SnackHouse.Controllers
@@ -16,8 +17,13 @@ namespace SnackHouse.Controllers
 
         public IActionResult FindAll()
         {
-            var snacks = _snackRepository.FindAll();
-            return View(snacks);
+            //var snacks = _snackRepository.FindAll();
+            //return View(snacks);
+
+            var snackListViewModel = new SnackListViewModel();
+            snackListViewModel.Snacks = _snackRepository.FindAll();
+            snackListViewModel.Category = "Categoria";
+            return View(snackListViewModel);
         }
     }
 }
