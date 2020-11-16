@@ -14,5 +14,6 @@ namespace SnackHouse.Data
         //Mapeando as tabelas
         public DbSet<Snack> Snacks { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

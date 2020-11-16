@@ -7,6 +7,7 @@
     @foreach (var snack in Model.Snacks)
     {
         @*Renderizando a PartialView*@
-        await Html.RenderPartialAsync("_SnackResumePartialView", snack);
+        //await Html.RenderPartialAsync("_SnackResumePartialView", snack);
+        <partial name="_SnackResumePartialView" for="@snack"/>
     }
 </div>
