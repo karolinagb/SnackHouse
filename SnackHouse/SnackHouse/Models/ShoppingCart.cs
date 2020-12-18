@@ -116,7 +116,7 @@ namespace SnackHouse.Models
             _snackHouseDbContext.SaveChanges();
         }
 
-        public decimal ShoppingCartTotalValue()
+        public decimal GetShoppingCartTotalValue()
         {
             var totalValue = _snackHouseDbContext.ShoppingCartItems.Where(cart => cart.ShoppingCartId == ShoppingCartId)
                 .Select(cart => cart.Snack.Price * cart.Quantity).Sum();
