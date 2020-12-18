@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using SnackHouse.Data;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,11 @@ namespace SnackHouse.Models
     {
         private readonly SnackHouseDbContext _snackHouseDbContext;
 
+        public ShoppingCart()
+        {
+
+        }
+
         //injeta o contexto no construtor
         public ShoppingCart(SnackHouseDbContext snackHouseDbContext)
         {
@@ -21,7 +27,7 @@ namespace SnackHouse.Models
         public string ShoppingCartId { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public static ShoppingCart GetCart(IServiceProvider services)
+        public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
             //define uma sessão acessando o contexto atual ()
             ISession session =
@@ -43,7 +49,7 @@ namespace SnackHouse.Models
             };
         }
 
-        public void AddToCart(Snack snack, int quantity)
+        public void AddCartItem(Snack snack, int quantity)
         {
             var shoppingCartItem =
                 _snackHouseDbContext.ShoppingCartItems.SingleOrDefault(
@@ -56,26 +62,27 @@ namespace SnackHouse.Models
                 {
                     ShoppingCartId = ShoppingCartId,
                     Snack = snack,
-                    Quantity = 1
+                    Quantity = quantity
                 };
+                _snackHouseDbContext.ShoppingCartItems.Add(shoppingCartItem);
             }
             else //se existir o carrinho com o item então incrementa a quantidade
             {
-                shoppingCartItem.Quantity++;
+                shoppingCartItem.Quantity += quantity;
             }
             _snackHouseDbContext.SaveChanges();
         }
 
-        public int RemoverDoCarrinho(Snack snack)
+        public int RemoveCartItem(Snack snack)
         {
             var shoppingCartItem =
                 _snackHouseDbContext.ShoppingCartItems.SingleOrDefault(item => item.Snack.Id == snack.Id && item.ShoppingCartId == ShoppingCartId);
-            
+
             var localQuantity = 0;
 
-            if(shoppingCartItem != null)
+            if (shoppingCartItem != null)
             {
-                if(shoppingCartItem.Quantity > 1)
+                if (shoppingCartItem.Quantity > 1)
                 {
                     shoppingCartItem.Quantity--;
                     localQuantity = shoppingCartItem.Quantity;
@@ -89,6 +96,31 @@ namespace SnackHouse.Models
             _snackHouseDbContext.SaveChanges();
 
             return localQuantity;
+        }
+
+        public List<ShoppingCartItem> GetShoppingCartItem()
+        {
+            return ShoppingCartItems ??
+                   (ShoppingCartItems =
+                       _snackHouseDbContext.ShoppingCartItems.Where(cart => cart.ShoppingCartId == ShoppingCartId)
+                           .Include(snack => snack.Snack)
+                           .ToList());
+        }
+
+        public void CleanShoppingCart()
+        {
+            var shoppingCartItems = _snackHouseDbContext.ShoppingCartItems
+                                 .Where(shoppingCart => shoppingCart.ShoppingCartId == ShoppingCartId);
+
+            _snackHouseDbContext.ShoppingCartItems.RemoveRange(shoppingCartItems);
+            _snackHouseDbContext.SaveChanges();
+        }
+
+        public decimal ShoppingCartTotalValue()
+        {
+            var totalValue = _snackHouseDbContext.ShoppingCartItems.Where(cart => cart.ShoppingCartId == ShoppingCartId)
+                .Select(cart => cart.Snack.Price * cart.Quantity).Sum();
+            return totalValue;
         }
     }
 }

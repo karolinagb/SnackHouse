@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 using SnackHouse.Data;
 using SnackHouse.Repositories;
+using SnackHouse.Models;
 
 namespace SnackHouse
 {
@@ -28,6 +30,9 @@ namespace SnackHouse
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ISnackRepository, SnackRepository>();
+            //Para ter acesso a sessão no contexto
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(shoppingCart => ShoppingCart.GetShoppingCart(shoppingCart));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,7 @@ namespace SnackHouse
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();//Ativando o uso da session
 
             app.UseRouting();
 
