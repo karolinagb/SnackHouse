@@ -422,3 +422,4 @@ C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.pdb
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.genruntimeconfig.cache
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Carousel.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\ShoppingCartResume\default.cshtml.g.cs
