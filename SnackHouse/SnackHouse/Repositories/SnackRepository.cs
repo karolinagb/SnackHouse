@@ -15,7 +15,7 @@ namespace SnackHouse.Repositories
             _snackHouseDbContext = snackHouseDbContext;
         }
 
-        ICollection<Snack> ISnackRepository.FindAll()
+        IEnumerable<Snack> ISnackRepository.FindAll()
         {
             return _snackHouseDbContext.Snacks.Include(snack => snack.Category).ToList();
         }
@@ -25,7 +25,7 @@ namespace SnackHouse.Repositories
             return _snackHouseDbContext.Snacks.FirstOrDefault(Snack => Snack.Id == snackId);
         }
 
-        ICollection<Snack> ISnackRepository.PreferSnacks()
+        IEnumerable<Snack> ISnackRepository.PreferSnacks()
         {
             return _snackHouseDbContext.Snacks.Where(snackP =>
             snackP.IsPreferSnack == true).Include(snackP => snackP.Category).ToList();

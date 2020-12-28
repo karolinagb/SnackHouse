@@ -33,6 +33,9 @@ namespace SnackHouse
             //Para ter acesso a sessão no contexto
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(shoppingCart => ShoppingCart.GetShoppingCart(shoppingCart));
+
+            services.AddMemoryCache();
+            services.AddSession();//incluir o serviço de sessão no estado da aplicação
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

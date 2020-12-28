@@ -46,12 +46,6 @@
         <div class="btn-group ">
             <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Encerrar Pedido</a>
             <div class="btn-group">
-                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Mais Lanches  <span class="caret"></span>
-                </a>
-                @await Component.InvokeAsync("CategoriaMenu")
-
-                @*//////////////////////////////////////////////////////////////////////////////
                     <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                           Adicionar mais lanches<span class="caret"></span>
                       </a>
@@ -59,7 +53,6 @@
                             <li><a asp-controller="Lanche" asp-action="List" asp-route-categoria="Normal"><b>Normal</b></a></li>
                             <li><a asp-controller="Lanche" asp-action="List" asp-route-categoria="Natural"><b>Natural</b></a></li>
                         </ul>
-                    ///////////////////////////////////////////////////////////////////////////////*@
             </div>
             </div>
     </div>

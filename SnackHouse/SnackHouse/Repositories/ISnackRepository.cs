@@ -9,9 +9,9 @@ namespace SnackHouse.Repositories
     public interface ISnackRepository
     {
         //Ver todos os lanches
-        ICollection<Snack> FindAll();
+        IEnumerable<Snack> FindAll();
 
-        ICollection<Snack> PreferSnacks();
+        IEnumerable<Snack> PreferSnacks();
 
         //Retornar lanche por Id
         Snack GetById(int snackId);

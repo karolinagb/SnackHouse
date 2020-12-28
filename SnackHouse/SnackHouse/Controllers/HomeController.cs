@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SnackHouse.Models;
+using SnackHouse.Models.ViewModels;
+using SnackHouse.Repositories;
 
 namespace SnackHouse.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISnackRepository _snackRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISnackRepository snackRepository)
         {
             _logger = logger;
+            _snackRepository = snackRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                PreferSnacks = _snackRepository.PreferSnacks()
+            };
+            return View(homeViewModel);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        } 
     }
 }
