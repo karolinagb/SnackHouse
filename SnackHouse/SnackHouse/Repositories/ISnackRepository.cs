@@ -11,6 +11,8 @@ namespace SnackHouse.Repositories
         //Ver todos os lanches
         IEnumerable<Snack> FindAll();
 
+        IEnumerable<Snack> SnackByCategory(string categoryName);
+
         IEnumerable<Snack> PreferSnacks();
 
         //Retornar lanche por Id

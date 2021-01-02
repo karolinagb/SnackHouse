@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SnackHouse.Models;
 using SnackHouse.Models.ViewModels;
 using SnackHouse.Repositories;
+using System;
+using System.Collections.Generic;
 
 namespace SnackHouse.Controllers
 {
@@ -15,15 +18,33 @@ namespace SnackHouse.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public IActionResult FindAll()
+        public IActionResult List(string categoryName)
         {
-            //var snacks = _snackRepository.FindAll();
-            //return View(snacks);
+            try{
+                string _categoryName = categoryName;
+                IEnumerable<Snack> snacks;
 
-            var snackListViewModel = new SnackListViewModel();
-            snackListViewModel.Snacks = _snackRepository.FindAll();
-            snackListViewModel.Category = "Categoria";
-            return View(snackListViewModel);
+                if (string.IsNullOrEmpty(_categoryName))
+                {
+                    snacks = _snackRepository.FindAll();
+                    _categoryName = "Todos os lanches";
+                }
+                else
+                {
+                    snacks = _snackRepository.SnackByCategory(_categoryName);
+                }
+
+                var snackListViewModel = new SnackListViewModel();
+                snackListViewModel.Snacks = snacks;
+                snackListViewModel.Category = _categoryName;
+                return View(snackListViewModel);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

@@ -20,6 +20,11 @@ namespace SnackHouse.Repositories
             return _snackHouseDbContext.Snacks.Include(snack => snack.Category).ToList();
         }
 
+        IEnumerable<Snack> ISnackRepository.SnackByCategory(string categoryName)
+        {
+            return _snackHouseDbContext.Snacks.Where(s => s.Category.CategoryName.Equals(categoryName)).ToList();
+        }
+
         Snack ISnackRepository.GetById(int snackId)
         {
             return _snackHouseDbContext.Snacks.FirstOrDefault(Snack => Snack.Id == snackId);

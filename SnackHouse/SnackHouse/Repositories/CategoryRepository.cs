@@ -18,7 +18,7 @@ namespace SnackHouse.Repositories
 
         ICollection<Category> ICategoryRepository.FindAll()
         {
-            return _snackHouseDbContext.Categories.ToList();
+            return _snackHouseDbContext.Categories.OrderBy(c => c.CategoryName).ToList();
         }
     }
 }
