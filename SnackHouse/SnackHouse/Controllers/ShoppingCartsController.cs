@@ -10,7 +10,7 @@ namespace SnackHouse.Controllers
         private readonly ISnackRepository _snackRepository;
         private readonly ShoppingCart _shoppingCart;
 
-        public ShoppingCartsController(ISnackRepository snackRepository, ShoppingCart shoppingCart, SnackRepository snackRepository1)
+        public ShoppingCartsController(ISnackRepository snackRepository, ShoppingCart shoppingCart)
         {
             _snackRepository = snackRepository;
             _shoppingCart = shoppingCart;
@@ -30,13 +30,13 @@ namespace SnackHouse.Controllers
             return View(shoppingCartViewModel);
         }
 
-        public IActionResult AddItem(int snackId, int quantity)
+        public IActionResult AddItem(int snackId)
         {
             var selectedSnack = _snackRepository.GetById(snackId);
 
             if(selectedSnack != null)
             {
-                _shoppingCart.AddCartItem(selectedSnack, quantity);
+                _shoppingCart.AddCartItem(selectedSnack);
             }
 
             return RedirectToAction("Index");

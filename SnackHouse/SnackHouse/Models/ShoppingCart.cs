@@ -49,7 +49,7 @@ namespace SnackHouse.Models
             };
         }
 
-        public void AddCartItem(Snack snack, int quantity)
+        public void AddCartItem(Snack snack)
         {
             var shoppingCartItem =
                 _snackHouseDbContext.ShoppingCartItems.SingleOrDefault(
@@ -61,14 +61,14 @@ namespace SnackHouse.Models
                 shoppingCartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = ShoppingCartId,
-                    Snack = snack,
-                    Quantity = quantity
+                    Snack = snack
+                    //Quantity = quantity
                 };
                 _snackHouseDbContext.ShoppingCartItems.Add(shoppingCartItem);
             }
             else //se existir o carrinho com o item então incrementa a quantidade
             {
-                shoppingCartItem.Quantity += quantity;
+                //shoppingCartItem.Quantity += quantity;
             }
             _snackHouseDbContext.SaveChanges();
         }

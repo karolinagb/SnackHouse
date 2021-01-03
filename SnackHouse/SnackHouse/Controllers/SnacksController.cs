@@ -46,5 +46,15 @@ namespace SnackHouse.Controllers
             }
             
         }
+
+        public IActionResult Details(int id)
+        {
+            var snack = _snackRepository.GetById(id);
+            if(snack == null)
+            {
+                return View("~/Views/Error/Error.cshtml");
+            }
+            return View(snack);
+        }
     }
 }
