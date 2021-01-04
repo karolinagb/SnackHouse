@@ -9,7 +9,7 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                @*<th>Quantidade</th>*@
+                <th>Quantidade</th>
                 <th>Lanche</th>
                 <th class="text-right">Preço</th>
                 <th class="text-right">Subtotal</th>
@@ -20,12 +20,12 @@
             @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
             {
                 <tr>
-                    @*<td class="text-center">@item.Quantity</td>*@
+                    <td class="text-center">@item.Quantity</td>
                     <td class="text-left">@item.Snack.Name</td>
                     <td class="text-right">@item.Snack.Price.ToString("c")</td>
-                    @*<td class="text-right">
+                    <td class="text-right">
                         @((item.Quantity * item.Snack.Price).ToString("c"))
-                    </td>*@
+                    </td>
                     <td class="text-center">
                         <a asp-controller="ShoppingCarts" asp-action="RemoveItem" asp-route-snackId="@item.Snack.Id"><img src="~/img/delete.png" /></a>
                     </td>
@@ -36,7 +36,7 @@
             <tr>
                 <td colspan="3" class="text-right">Total:</td>
                 <td class="text-right">
-                    @*@Model.TotalValueShoppingCart.ToString("c");*@
+                    @Model.TotalValueShoppingCart.ToString("c");
                 </td>
             </tr>
         </tfoot>

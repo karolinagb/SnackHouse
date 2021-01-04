@@ -61,14 +61,14 @@ namespace SnackHouse.Models
                 shoppingCartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = ShoppingCartId,
-                    Snack = snack
-                    //Quantity = quantity
+                    Snack = snack,
+                    Quantity = 1
                 };
                 _snackHouseDbContext.ShoppingCartItems.Add(shoppingCartItem);
             }
             else //se existir o carrinho com o item então incrementa a quantidade
             {
-                //shoppingCartItem.Quantity += quantity;
+                shoppingCartItem.Quantity++;
             }
             _snackHouseDbContext.SaveChanges();
         }

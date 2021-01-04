@@ -16,10 +16,7 @@ namespace SnackHouse.Components
 
         public IViewComponentResult Invoke()
         {
-            //var itens = _shoppingCart.GetShoppingCartItem();
-
-            var items = new List<ShoppingCartItem>() 
-            { new ShoppingCartItem(), new ShoppingCartItem() };
+            var items = _shoppingCart.GetShoppingCartItem();
 
             _shoppingCart.ShoppingCartItems = items;
 

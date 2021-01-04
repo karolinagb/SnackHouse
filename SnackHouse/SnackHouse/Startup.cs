@@ -30,8 +30,11 @@ namespace SnackHouse
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ISnackRepository, SnackRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+
             //Para ter acesso a sessão no contexto
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped(shoppingCart => ShoppingCart.GetShoppingCart(shoppingCart));
 
             services.AddMemoryCache();
