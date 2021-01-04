@@ -17,5 +17,7 @@ namespace SnackHouse.Repositories
 
         //Retornar lanche por Id
         Snack GetById(int snackId);
+
+        IEnumerable<Snack> GetByStringSearch(string stringSearch);
     }
 }

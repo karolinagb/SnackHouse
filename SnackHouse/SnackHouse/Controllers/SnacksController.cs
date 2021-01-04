@@ -32,6 +32,7 @@ namespace SnackHouse.Controllers
                 else
                 {
                     snacks = _snackRepository.SnackByCategory(_categoryName);
+                    _categoryName = categoryName;
                 }
 
                 var snackListViewModel = new SnackListViewModel();
@@ -55,6 +56,23 @@ namespace SnackHouse.Controllers
                 return View("~/Views/Error/Error.cshtml");
             }
             return View(snack);
+        }
+
+        public IActionResult Search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Snack> snacks;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                snacks = _snackRepository.FindAll();
+            }
+            else
+            {
+                snacks = _snackRepository.GetByStringSearch(_searchString);
+            }
+
+            return View(snacks);
         }
     }
 }

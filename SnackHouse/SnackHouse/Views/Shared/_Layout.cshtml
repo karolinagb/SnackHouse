@@ -22,7 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                            @await Component.InvokeAsync("CategoryMenu")
+                        @await Component.InvokeAsync("CategoryMenu")
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
@@ -30,6 +30,10 @@
                             @await Component.InvokeAsync("ShoppingCartResume")
                         </li>
                     </ul>
+                    <form class="d-flex" asp-controller="Snacks" asp-action="Search" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Procurar lanche" aria-label="Search" name="searchString" value="@ViewData["searchString"]">
+                        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                    </form>
                 </div>
             </div>
         </nav>

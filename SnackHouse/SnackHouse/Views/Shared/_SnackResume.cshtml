@@ -11,8 +11,8 @@
         <p class="formPullRightButton">
 
             @*<a class="btn btn-app btn-primary" id="minus-@Model.Id" onclick="changeQuantity(@Model.Id, 'sub')"><i class="fas fa-minus"></i></a>
-            <a class="btn btn-app"><input id="quantity-@Model.Id" value="1"/></a>
-            <a class="btn btn-app btn-primary" id="plus-@Model.Id" onclick="changeQuantity(@Model.Id, 'sum')"><i class="fas fa-plus"></i></a>*@
+                <a class="btn btn-app"><input id="quantity-@Model.Id" value="1"/></a>
+                <a class="btn btn-app btn-primary" id="plus-@Model.Id" onclick="changeQuantity(@Model.Id, 'sum')"><i class="fas fa-plus"></i></a>*@
 
             <a class="btn btn-primary" id="addItem-@Model.Id" asp-controller="ShoppingCarts" asp-action="AddItem" asp-route-snackId="@Model.Id">Incluir no carrinho</a>
         </p>
@@ -21,19 +21,19 @@
 
 @*<script type="text/javascript">
 
-    function changeQuantity(id, option)
-    {
-        var quantity = parseInt($('#quantity-' + id).val());
-        if (quantity >= 1) {
-            if (option == 'sum') {
-                quantity = quantity + 1;
+        function changeQuantity(id, option)
+        {
+            var quantity = parseInt($('#quantity-' + id).val());
+            if (quantity >= 1) {
+                if (option == 'sum') {
+                    quantity = quantity + 1;
+                }
+                if (option == 'sub' && quantity > 1) {
+                    quantity = quantity - 1;
+                }
+                $('#quantity-' + id).val(quantity);
+                $('#addItem-' + id).removeAttr('href');
+                $('#addItem-' + id).attr('href', '/ShoppingCarts/AddItem?snackId=' + id + '&quantity=' + quantity)
             }
-            if (option == 'sub' && quantity > 1) {
-                quantity = quantity - 1;
-            }
-            $('#quantity-' + id).val(quantity);
-            $('#addItem-' + id).removeAttr('href');
-            $('#addItem-' + id).attr('href', '/ShoppingCarts/AddItem?snackId=' + id + '&quantity=' + quantity)
         }
-    }
-</script>*@
+    </script>*@

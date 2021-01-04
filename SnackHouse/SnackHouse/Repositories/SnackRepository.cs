@@ -30,6 +30,11 @@ namespace SnackHouse.Repositories
             return _snackHouseDbContext.Snacks.FirstOrDefault(Snack => Snack.Id == snackId);
         }
 
+        public IEnumerable<Snack> GetByStringSearch(string stringSearch)
+        {
+            return _snackHouseDbContext.Snacks.Include(s => s.Category).Where(s => s.Name.ToLower().Contains(stringSearch.ToLower())).ToList();
+        }
+
         IEnumerable<Snack> ISnackRepository.PreferSnacks()
         {
             return _snackHouseDbContext.Snacks.Where(snackP =>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Snack>
+
+<div class="row">
+    @foreach (var snack in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <img src="~/img/snacks/@snack.ImgUrl" class="card-img-top imgSnack" alt="@snack.Name" />
+            <div class="figure-caption">
+                <h4 class="formPullRightButton">@snack.Price.ToString("c")</h4>
+                <h4>
+                    <a asp-controller="Snacks" asp-action="Details" asp-route-id="@snack.Id">@snack.Name</a>
+                </h4>
+                <h6>@snack.SmallDescription</h6>
+            </div>
+            <div class="text-right">
+                <p class="formPullRightButton">
+
+                    @*<a class="btn btn-app btn-primary" id="minus-@Model.Id" onclick="changeQuantity(@Model.Id, 'sub')"><i class="fas fa-minus"></i></a>
+                        <a class="btn btn-app"><input id="quantity-@Model.Id" value="1"/></a>
+                        <a class="btn btn-app btn-primary" id="plus-@Model.Id" onclick="changeQuantity(@Model.Id, 'sum')"><i class="fas fa-plus"></i></a>*@
+
+                    <a class="btn btn-primary" id="addItem-@snack.Id" asp-controller="ShoppingCarts" asp-action="AddItem" asp-route-snackId="@snack.Id">Incluir no carrinho</a>
+                </p>
+            </div>
+        </div>
+    }
+</div>
