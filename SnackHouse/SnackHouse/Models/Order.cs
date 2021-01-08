@@ -56,12 +56,12 @@ namespace SnackHouse.Models
         [EmailAddress(ErrorMessage = "E-mail no formato inválido")]
         public string Email { get; set; }
 
-        [BindNever]
+        //[BindNever]
         [ScaffoldColumn(false)] //Indica que esse campo não vai ser visível na View
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalOrder { get; set; }
 
-        //[BindNever]
+        [BindNever]
         //[ScaffoldColumn(false)] //Indica que esse campo não vai ser visível na View
         [Display(Name = "Data/Hora de envio do Pedido")]
         [DataType(DataType.DateTime)]

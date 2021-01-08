@@ -22,6 +22,7 @@ namespace SnackHouse.Repositories
         {
             order.SendDate = DateTime.Now;
             _snackHouseDbContext.Orders.Add(order);
+            _snackHouseDbContext.SaveChanges();
 
             var shoppingCartItems = _snackHouseDbContext.ShoppingCartItems;
 
