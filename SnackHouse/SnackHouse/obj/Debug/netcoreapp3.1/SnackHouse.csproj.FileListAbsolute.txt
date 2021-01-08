@@ -427,3 +427,5 @@ C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SnackResume.cshtml.g.cs
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Snacks\Details.cshtml.g.cs
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Snacks\Search.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Checkout.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Orders\CompletCheckout.cshtml.g.cs
