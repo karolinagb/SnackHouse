@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SnackHouse.Models;
 
 namespace SnackHouse.Data
 {
-    public class SnackHouseDbContext : DbContext
+    public class SnackHouseDbContext : IdentityDbContext<IdentityUser>
     {
         //Classe DbContext representa uma sessão com o BD
         public SnackHouseDbContext(DbContextOptions<SnackHouseDbContext> options) : base(options)

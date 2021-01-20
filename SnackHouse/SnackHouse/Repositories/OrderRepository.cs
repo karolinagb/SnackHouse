@@ -24,7 +24,7 @@ namespace SnackHouse.Repositories
             _snackHouseDbContext.Orders.Add(order);
             _snackHouseDbContext.SaveChanges();
 
-            var shoppingCartItems = _snackHouseDbContext.ShoppingCartItems;
+            var shoppingCartItems = _shoppingCart.ShoppingCartItems;
 
             foreach (var item in shoppingCartItems)
             {

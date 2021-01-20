@@ -20,14 +20,14 @@
                 @foreach (var item in Model.OrderDetails)
                 {
                     <tr>
-                        <td><img src="@item.Snack.ImgUrl" width="40" height="40" /></td>
+                        <td><img src="~/img/snacks/@item.Snack.ImgUrl" width="40" height="40" /></td>
                         <td>@item.Quantity</td>
                         <td>@item.Snack.Name</td>
                         <td>@item.Snack.Price</td>
                     </tr>
                 }
             </table>
-            <h4>Valor Total do Pedido: <strong>@(((decimal)ViewBag.TotalOrder).ToString("C2"))</strong></h4>
+            <h4>Valor Total do Pedido: <strong>@((ViewBag.OrderTotal).ToString("C2"))</strong></h4>
         </div>
     </div>
 </div>

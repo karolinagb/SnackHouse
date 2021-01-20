@@ -1,8 +1,5 @@
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.AssemblyInfoInputs.cache
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.AssemblyInfo.cs
-C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.csproj.CoreCompileInputs.cache
-C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.MvcApplicationPartsAssemblyInfo.cs
-C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.MvcApplicationPartsAssemblyInfo.cache
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.RazorAssemblyInfo.cache
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.RazorAssemblyInfo.cs
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\appsettings.Development.json
