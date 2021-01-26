@@ -79,5 +79,12 @@ namespace SnackHouse.Controllers
             return View(registerViewModel);
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
