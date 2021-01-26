@@ -55,5 +55,29 @@ namespace SnackHouse.Controllers
             return View(model);
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel registerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser() { UserName = registerViewModel.Username };
+
+                var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(registerViewModel);
+        }
+
     }
 }
