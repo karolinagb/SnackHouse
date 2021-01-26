@@ -430,3 +430,6 @@ C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\Microsoft.E
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.csproj.CoreCompileInputs.cache
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.MvcApplicationPartsAssemblyInfo.cs
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\SnackHouse.MvcApplicationPartsAssemblyInfo.cache
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Accounts\Login.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Accounts\Register.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Login.cshtml.g.cs

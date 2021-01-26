@@ -34,6 +34,7 @@
                         <input class="form-control me-2" type="search" placeholder="Procurar lanche" aria-label="Search" name="searchString" value="@ViewData["searchString"]">
                         <button class="btn btn-outline-success" type="submit">Pesquisar</button>
                     </form>
+                        @await Html.PartialAsync("_Login")
                 </div>
             </div>
         </nav>

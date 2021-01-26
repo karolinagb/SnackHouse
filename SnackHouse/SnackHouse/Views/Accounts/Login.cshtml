@@ -1,0 +1,41 @@
+﻿@model LoginViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/img/login1.jpg" alt="Fazer o login" class="center-block" />
+    </div>
+    <div class="col-md-8">
+        <h4>Informe as credenciais do usuário</h4>
+        <form asp-controller="Account" asp-action="Login" class="form-horizontal" role="form">
+            <hr />
+            <input type="hidden" asp-for="URL" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group center">
+                        <div class="col-md-offset-2">
+                            <input type="submit" class="btn btn-success btn-block" value="Log in" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

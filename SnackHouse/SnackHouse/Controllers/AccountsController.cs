@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace SnackHouse.Controllers
 {
-    public class AccountController : Controller
+    public class AccountsController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountsController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -66,7 +66,7 @@ namespace SnackHouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = registerViewModel.Username };
+                var user = new IdentityUser() { UserName = registerViewModel.UserName };
 
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
 

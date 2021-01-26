@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SnackHouse.Controllers
 {
-    public class ContactController : Controller
+    public class ContactsController : Controller
     {
         public IActionResult Index()
         {
