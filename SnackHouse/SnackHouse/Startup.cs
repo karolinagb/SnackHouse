@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using SnackHouse.Data;
 using SnackHouse.Repositories;
 using SnackHouse.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace SnackHouse
 {
@@ -23,6 +24,10 @@ namespace SnackHouse
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<IdentityUser, IdentityRole>() //Adiciona o sistema Identiy padrão para os tipos de perfis especificados
+                .AddEntityFrameworkStores<SnackHouseDbContext>() //Adiciona uma implementação do EntityFramework que armazena as informações de identidade
+                .AddDefaultTokenProviders(); //Inclui os tokens para troca de senha e envio de e-mail
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             //Informando a classe DBCONtext utilizada e o provedor do banco
             services.AddDbContext<SnackHouseDbContext>(options =>
@@ -60,6 +65,7 @@ namespace SnackHouse
 
             app.UseRouting();
 
+            app.UseAuthentication(); //Midleware que adiciona a autenticação ao pipeline da solicitação
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
