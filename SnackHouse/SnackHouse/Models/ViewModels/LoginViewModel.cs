@@ -13,6 +13,7 @@ namespace SnackHouse.Models.ViewModels
         public string UserName { get; set; }
         [Required(ErrorMessage = "Digite a senha do usuário!")]
         [Display(Name = "Senha")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string URL { get; set; }
     }

@@ -8,6 +8,7 @@
                     <h4>Registrar usuário</h4>
                     <form asp-controller="Accounts" asp-action="Register" method="post" class="form-horizontal" role="form">
                         <hr />
+                        <strong class="text-danger">@Html.ValidationSummary()</strong>
                         <div class="form-group">
                             <label asp-for="UserName" class="col-md-2 control-label"></label>
                             <div class="col-md-12">

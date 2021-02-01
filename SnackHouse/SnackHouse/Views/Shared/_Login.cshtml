@@ -5,15 +5,16 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-controller="Accounts" asp-action="Logout" id="logoutForm" method="post" class="navbar-left">
-        
-            <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white">&nbsp;Log off&nbsp;&nbsp;&nbsp;</a>
+    <form asp-area="" asp-controller="Accounts" asp-action="Logout" id="logoutForm">
+        <a class="nav-link text-dark" href="javascript:document.getElementById('logoutForm').submit()" style="color:white">&nbsp;Log off&nbsp;&nbsp;&nbsp;</a>
     </form>
 }
 else
 {
-
-        <a class="nav-link text-light" asp-controller="Accounts" asp-action="Login" style="color:white">&nbsp; Log in&nbsp; </a>
-        <a class="nav-link text-light" asp-controller="Accounts" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;&nbsp; </a>
-
+    <li>
+        <a class="nav-link text-dark" asp-controller="Accounts" asp-action="Login" style="color:white">&nbsp; Log in&nbsp; </a>
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-controller="Accounts" asp-action="Register" style="color:white">&nbsp;Registro&nbsp;&nbsp;&nbsp; </a>
+    </li>
 }
