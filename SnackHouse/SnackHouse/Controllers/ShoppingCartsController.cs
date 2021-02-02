@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SnackHouse.Models;
 using SnackHouse.Models.ViewModels;
 using SnackHouse.Repositories;
@@ -30,6 +31,7 @@ namespace SnackHouse.Controllers
             return View(shoppingCartViewModel);
         }
 
+        [Authorize]
         public IActionResult AddItem(int snackId)
         {
             var selectedSnack = _snackRepository.GetById(snackId);
@@ -42,6 +44,7 @@ namespace SnackHouse.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult RemoveItem(int snackId)
         {
             var selectedSnack = _snackRepository.GetById(snackId);

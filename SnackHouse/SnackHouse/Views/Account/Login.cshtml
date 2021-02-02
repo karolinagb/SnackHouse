@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-8">
         <h4>Informe as credenciais do usuário</h4>
-        <form asp-controller="Accounts" asp-action="Login" method="post" class="form-horizontal" role="form">
+        <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
             <hr />
             <strong class="text-danger">@Html.ValidationSummary()</strong>
             <input type="hidden" asp-for="URL" />

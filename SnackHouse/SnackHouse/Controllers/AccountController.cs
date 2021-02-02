@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SnackHouse.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
-        public AccountsController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
