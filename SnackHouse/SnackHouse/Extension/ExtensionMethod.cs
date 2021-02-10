@@ -12,6 +12,7 @@ namespace SnackHouse.Extension
 {
     public static class ExtensionMethod
     {
+        //Método de extensão tem q ser static e ter o modificado this
         public static IHost CreateAdminRole(this IHost host)
         {
             // Create a scope to get scoped services.
