@@ -16,7 +16,7 @@ namespace SnackHouse.Controllers
             _snackRepository = snackRepository;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             var homeViewModel = new HomeViewModel
             {

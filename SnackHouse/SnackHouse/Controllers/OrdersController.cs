@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SnackHouse.Data;
 using SnackHouse.Models;
 using SnackHouse.Repositories;
@@ -17,12 +18,14 @@ namespace SnackHouse.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        [Authorize]
         public ActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Checkout(Order order)
         {
             try

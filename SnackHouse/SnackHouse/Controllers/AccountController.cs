@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SnackHouse.Models.ViewModels;
+using System;
 using System.Threading.Tasks;
 
 namespace SnackHouse.Controllers
@@ -25,34 +26,88 @@ namespace SnackHouse.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
-            }
-
-            var user = await _userManager.FindByNameAsync(model.UserName);
-
-            if(user != null)
-            {
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
-
-                if (result.Succeeded)
+                if (!ModelState.IsValid)
                 {
-                    if (string.IsNullOrEmpty(model.URL))
+                    return View(model);
+                }
+
+                var user = await _userManager.FindByNameAsync(model.UserName);
+
+                if (user != null)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
+
+                    if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return RedirectToAction(model.URL);
+                        if (string.IsNullOrEmpty(model.URL))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            return Redirect(model.URL);
+                        }
                     }
                 }
-            }
 
-            ModelState.AddModelError("", "Usuário não encontrado");
-            return View(model);
+                ModelState.AddModelError("User", "Usuário não encontrado");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View(model);
+            }
+            
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel registerViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = new IdentityUser() { UserName = registerViewModel.UserName };
+
+                    var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+
+                    if (result.Succeeded)
+                    {
+                        //Adiciona o usuário padrão ao perfil member
+                        await _userManager.AddToRoleAsync(user, "Member");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        return RedirectToAction("LoggedIn", "Account");
+                    }
+                }
+
+                return View(registerViewModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View(registerViewModel);
+            }
+            
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
     }
