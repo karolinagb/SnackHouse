@@ -71,6 +71,10 @@ namespace SnackHouse
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "AdminArea",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "filterByCategory",
                     pattern: "{controller=Snacks}/{action=List}/{categoryName?}",
                     defaults: new {Controller="Snacks", action="List"}
@@ -80,9 +84,7 @@ namespace SnackHouse
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapControllerRoute(
-                    name: "AdminArea",
-                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                
             });
         }
     }
