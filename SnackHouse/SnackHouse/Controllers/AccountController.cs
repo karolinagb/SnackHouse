@@ -85,7 +85,11 @@ namespace SnackHouse.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Login");
+                        //Adiciona o usuário padrão ao perfil member
+                        await _userManager.AddToRoleAsync(user, "Member");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        return RedirectToAction("LoggedIn", "Account");
                     }
                 }
 

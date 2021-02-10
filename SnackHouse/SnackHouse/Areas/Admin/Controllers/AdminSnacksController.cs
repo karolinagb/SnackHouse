@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SnackHouse.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminSnacksController : Controller
     {
         private readonly SnackHouseDbContext _context;
