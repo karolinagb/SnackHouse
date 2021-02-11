@@ -1,19 +1,34 @@
-﻿@model IEnumerable<SnackHouse.Models.Order>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<SnackHouse.Models.Order>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Pedidos</h1>
+
+<form method="get" class="form-inline">
+    <input name="filter" class="form-control" placeholder="filtro" value="@Model.RouteValue["Filter"]" />
+    <button type="submit" class="btn btn-info">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        Procurar
+    </button>
+</form>
+
+Total de pedidos : @Model.TotalRecordCount
+<div>
+    @* Visual component para exibir o paginador*@
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar pedido</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.SortableHeaderFor(model => model.Name, "Name")
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerSurname)
@@ -41,6 +56,8 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SendDate)
+                @* Mostrar somente data sem hora: *@
+                @*@String.Format("{0:dd/MM/yyyy}", model.SendDate)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeliveryDate)
@@ -49,47 +66,53 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerSurname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressComplement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CEP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telephone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SendDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressComplement)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SendDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div>
+    @* Visual component para exibir o paginador*@
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>

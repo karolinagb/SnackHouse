@@ -9,6 +9,7 @@ using SnackHouse.Data;
 using SnackHouse.Repositories;
 using SnackHouse.Models;
 using Microsoft.AspNetCore.Identity;
+using ReflectionIT.Mvc.Paging;
 
 namespace SnackHouse
 {
@@ -47,6 +48,13 @@ namespace SnackHouse
 
             services.AddMemoryCache();
             services.AddSession();//incluir o serviço de sessão no estado da aplicação
+
+            //Adicionando serviço de paginação e filtro ao projeto
+            services.AddPaging(options =>
+            {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

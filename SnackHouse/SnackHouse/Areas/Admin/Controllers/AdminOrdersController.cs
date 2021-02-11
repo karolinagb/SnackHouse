@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using SnackHouse.Data;
 using SnackHouse.Models;
 using System.Linq;
@@ -20,9 +22,25 @@ namespace SnackHouse.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminOrders
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Orders.ToListAsync());
+        //}
+
+        public async Task<ActionResult> Index(string filter, int pageindex = 1, string sort = "Name")
         {
-            return View(await _context.Orders.ToListAsync());
+            var result = _context.Orders.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrEmpty(filter))
+            {
+                result = result.Where(p => p.Name.Contains(filter));
+            }
+
+            var model = await PagingList.CreateAsync(result, 5, pageindex, sort, "Name");
+
+            model.RouteValue = new RouteValueDictionary { { "filter", filter } };
+
+            return View(model);
         }
 
         // GET: Admin/AdminOrders/Details/5
