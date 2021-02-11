@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
 using SnackHouse.Data;
 using SnackHouse.Models;
+using SnackHouse.Models.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -166,6 +167,26 @@ namespace SnackHouse.Areas.Admin.Controllers
         private bool OrderExists(int id)
         {
             return _context.Orders.Any(e => e.Id == id);
+        }
+
+        public ActionResult OrderSnack(int? id)
+        {
+            var order = _context.Orders.Include(x => x.OrderDetails).ThenInclude(x => x.Snack)
+                .FirstOrDefault(x => x.Id == id);
+
+            if(order == null)
+            {
+                Response.StatusCode = 404;
+                return View("OrderNotFound", id.Value);
+            }
+
+            OrderSnackViewModel orderSnackViewModel = new OrderSnackViewModel()
+            {
+                Order = order,
+                OrderDetails = order.OrderDetails
+            };
+
+            return View(orderSnackViewModel);
         }
     }
 }

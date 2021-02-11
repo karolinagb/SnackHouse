@@ -475,3 +475,5 @@ C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Views\Home\AccessDenied.cshtml.g.cs
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.Views.dll
 C:\projetos\SnackHouse\SnackHouse\SnackHouse\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.dll
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminOrders\OrderNotFound.cshtml.g.cs
+C:\projetos\SnackHouse\SnackHouse\SnackHouse\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\AdminOrders\OrderSnack.cshtml.g.cs
