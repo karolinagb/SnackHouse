@@ -24,5 +24,10 @@ namespace SnackHouse.Controllers
             };
             return View(homeViewModel);
         }
+
+        public ActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

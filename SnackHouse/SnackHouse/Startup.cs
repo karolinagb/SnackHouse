@@ -42,6 +42,9 @@ namespace SnackHouse
 
             services.AddScoped(shoppingCart => ShoppingCart.GetShoppingCart(shoppingCart));
 
+            //Quando acontecer o erro 403 ele vai redirecionar para o caminho definido aqui
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
+
             services.AddMemoryCache();
             services.AddSession();//incluir o serviço de sessão no estado da aplicação
         }
