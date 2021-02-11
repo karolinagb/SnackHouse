@@ -21,23 +21,21 @@ namespace SnackHouse.Controllers
         public IActionResult List(string categoryName)
         {
             try{
-                string _categoryName = categoryName;
                 IEnumerable<Snack> snacks;
 
-                if (string.IsNullOrEmpty(_categoryName))
+                if (string.IsNullOrEmpty(categoryName))
                 {
                     snacks = _snackRepository.FindAll();
-                    _categoryName = "Todos os lanches";
+                    categoryName = "Todos os lanches";
                 }
                 else
                 {
-                    snacks = _snackRepository.SnackByCategory(_categoryName);
-                    _categoryName = categoryName;
+                    snacks = _snackRepository.SnackByCategory(categoryName);
                 }
 
                 var snackListViewModel = new SnackListViewModel();
                 snackListViewModel.Snacks = snacks;
-                snackListViewModel.Category = _categoryName;
+                snackListViewModel.Category = categoryName;
                 return View(snackListViewModel);
             }
             catch(Exception e)
