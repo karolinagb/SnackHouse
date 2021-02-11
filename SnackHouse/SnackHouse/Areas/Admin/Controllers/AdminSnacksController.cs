@@ -31,7 +31,7 @@ namespace SnackHouse.Areas.Admin.Controllers
 
         public async Task<ActionResult> Index(string filter, int pageindex = 1, string sort = "Name")
         {
-            var result = _context.Snacks.AsNoTracking().AsQueryable();
+            var result = _context.Snacks.Include(x=> x.Category).AsNoTracking().AsQueryable();
 
             if (!string.IsNullOrEmpty(filter))
             {
