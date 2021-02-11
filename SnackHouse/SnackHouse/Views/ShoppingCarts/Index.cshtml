@@ -46,15 +46,20 @@
         <div class="btn-group ">
             <a class="btn btn-success" asp-controller="Orders" asp-action="Checkout">Encerrar Pedido</a>
             <div class="btn-group">
-                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          Adicionar mais lanches<span class="caret"></span>
-                      </a>
-                        <ul class="dropdown-menu" role="menuitem">
-                            <li><a asp-controller="Snacks" asp-action="List" asp-route-categoryName="Normal"><b>Normal</b></a></li>
-                            <li><a asp-controller="Snacks" asp-action="List" asp-route-categoryName="Natural"><b>Natural</b></a></li>
-                        </ul>
+                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Adicionar mais lanches<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menuitem">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li class="dropdown-item">
+                            <a asp-controller="Snacks" asp-action="List" style="color:black"
+                               asp-route-categoryName="@category.CategoryName">@category.CategoryName</a>
+                        </li>
+                    }
+                </ul>
             </div>
-            </div>
+        </div>
     </div>
 </div>
 

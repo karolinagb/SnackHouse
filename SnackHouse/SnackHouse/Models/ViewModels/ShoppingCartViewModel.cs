@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SnackHouse.Models.ViewModels
 {
@@ -9,5 +6,6 @@ namespace SnackHouse.Models.ViewModels
     {
         public ShoppingCart ShoppingCart { get; set; }
         public decimal TotalValueShoppingCart { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

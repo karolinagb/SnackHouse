@@ -9,11 +9,13 @@ namespace SnackHouse.Controllers
     public class ShoppingCartsController : Controller
     {
         private readonly ISnackRepository _snackRepository;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly ShoppingCart _shoppingCart;
 
-        public ShoppingCartsController(ISnackRepository snackRepository, ShoppingCart shoppingCart)
+        public ShoppingCartsController(ISnackRepository snackRepository, ICategoryRepository categoryRepository, ShoppingCart shoppingCart)
         {
             _snackRepository = snackRepository;
+            _categoryRepository = categoryRepository;
             _shoppingCart = shoppingCart;
         }
 
@@ -25,7 +27,8 @@ namespace SnackHouse.Controllers
             var shoppingCartViewModel = new ShoppingCartViewModel()
             {
                 ShoppingCart = _shoppingCart,
-                TotalValueShoppingCart = _shoppingCart.GetShoppingCartTotalValue()
+                TotalValueShoppingCart = _shoppingCart.GetShoppingCartTotalValue(),
+                Categories = _categoryRepository.FindAll()
             };
 
             return View(shoppingCartViewModel);
