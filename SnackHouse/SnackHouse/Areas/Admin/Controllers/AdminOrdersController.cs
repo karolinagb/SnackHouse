@@ -183,7 +183,8 @@ namespace SnackHouse.Areas.Admin.Controllers
             OrderSnackViewModel orderSnackViewModel = new OrderSnackViewModel()
             {
                 Order = order,
-                OrderDetails = order.OrderDetails
+                OrderDetails = order.OrderDetails,
+                OrderTotal = order.TotalOrder
             };
 
             return View(orderSnackViewModel);

@@ -41,10 +41,11 @@ namespace SnackHouse.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        order.TotalOrder = _shoppingCart.GetShoppingCartTotalValue();
                         _orderRepository.Insert(order);
 
                         ViewBag.CompletCheckoutMessage = "Obrigado pelo seu pedido :) ";
-                        ViewBag.OrderTotal = _shoppingCart.GetShoppingCartTotalValue();
+                        //ViewBag.OrderTotal = _shoppingCart.GetShoppingCartTotalValue();
 
                         _shoppingCart.CleanShoppingCart();
                         return View("~/Views/Orders/CompletCheckout.cshtml", order);

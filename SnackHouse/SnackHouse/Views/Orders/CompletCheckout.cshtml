@@ -27,7 +27,7 @@
                     </tr>
                 }
             </table>
-            <h4>Valor Total do Pedido: <strong>@((ViewBag.OrderTotal).ToString("C2"))</strong></h4>
+            <h4>Valor Total do Pedido: <strong>@*@((ViewBag.OrderTotal).ToString("C2")*@ @Model.TotalOrder.ToString("C2")</strong></h4>
         </div>
     </div>
 </div>

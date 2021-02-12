@@ -30,15 +30,12 @@
             <td align="right">
                 <h3>(@Html.DisplayFor(modelItem => item.Quantity))</h3>
             </td>
-            <td>
-                <h3>Total do pedido : @string.Format("{0:C}", item.Order.TotalOrder)</h3>
-            </td>
         </tr>
     }
     <tr>
         <td colspan="2">&nbsp;</td>
         <td align="right">
-            <h3>Total do pedido : @string.Format("{0:C}", totalOrders)</h3>
+            <h3>Total do pedido : @string.Format("{0:C}", Model.Order.TotalOrder)</h3>
         </td>
     </tr>
 </table>
