@@ -36,7 +36,7 @@ namespace SnackHouse.Models
 
         [Required(ErrorMessage = "Informe o seu CEP")]
         [Display(Name = "CEP")]
-        [StringLength(10, MinimumLength = 8)]
+        [StringLength(10, MinimumLength = 8, ErrorMessage = "CEP tem que ter no mínimo 8 e no máximo 10 números")]
         public string CEP { get; set; }
 
         [StringLength(10)]
@@ -60,6 +60,11 @@ namespace SnackHouse.Models
         [ScaffoldColumn(false)] //Indica que esse campo não vai ser visível na View
         [Column(TypeName = "decimal(18,2)")]
         public decimal TotalOrder { get; set; }
+
+        [BindNever]
+        [ScaffoldColumn(false)]
+        [Display(Name = "Quantidade de Itens")]
+        public int OrderItensQuantity { get; set; }
 
         //[BindNever]
         //[ScaffoldColumn(false)] //Indica que esse campo não vai ser visível na View

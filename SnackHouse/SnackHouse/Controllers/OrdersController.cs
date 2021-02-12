@@ -33,43 +33,50 @@ namespace SnackHouse.Controllers
                 var items = _shoppingCart.GetShoppingCartItem();
                 _shoppingCart.ShoppingCartItems = items;
 
+                //verifica se existem itens de pedido
                 if (_shoppingCart.ShoppingCartItems.Count == 0)
                 {
                     ModelState.AddModelError("", "Seu carrinho está vazio, inclua um lanche!");
                 }
-                else
+
+                //calcula o total do pedido
+                foreach(var item in items)
                 {
-                    if (ModelState.IsValid)
-                    {
-                        order.TotalOrder = _shoppingCart.GetShoppingCartTotalValue();
-                        _orderRepository.Insert(order);
-
-                        ViewBag.CompletCheckoutMessage = "Obrigado pelo seu pedido :) ";
-                        //ViewBag.OrderTotal = _shoppingCart.GetShoppingCartTotalValue();
-
-                        _shoppingCart.CleanShoppingCart();
-                        return View("~/Views/Orders/CompletCheckout.cshtml", order);
-                    }
+                    order.OrderItensQuantity += item.Quantity;
+                    order.TotalOrder += (item.Snack.Price * item.Quantity);
                 }
+
+                if (ModelState.IsValid)
+                {
+                    order.TotalOrder = _shoppingCart.GetShoppingCartTotalValue();
+                    _orderRepository.Insert(order);
+
+                    ViewBag.CompletCheckoutMessage = "Obrigado pelo seu pedido :) ";
+                    //ViewBag.OrderTotal = _shoppingCart.GetShoppingCartTotalValue();
+
+                    _shoppingCart.CleanShoppingCart();
+                    return View("~/Views/Orders/CompletCheckout.cshtml", order);
+                }
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                
+
             }
-            
+
 
             return View(order);
         }
 
         //public ActionResult CompletCheckout()
         //{
-            //ViewBag.Customer = TempData["Customer"];
-            //ViewBag.OrderDate = TempData["OrderDate"];
-            //ViewBag.OrderNumber = TempData["OrderNumber"];
-            //ViewBag.OrderTotal = TempData["OrderTotal"];
-            //ViewBag.CompletCheckoutMessage = "Obrigado pelo seu pedido :) ";
-            //return View();
+        //ViewBag.Customer = TempData["Customer"];
+        //ViewBag.OrderDate = TempData["OrderDate"];
+        //ViewBag.OrderNumber = TempData["OrderNumber"];
+        //ViewBag.OrderTotal = TempData["OrderTotal"];
+        //ViewBag.CompletCheckoutMessage = "Obrigado pelo seu pedido :) ";
+        //return View();
         //}
     }
 }

@@ -10,6 +10,7 @@ using SnackHouse.Repositories;
 using SnackHouse.Models;
 using Microsoft.AspNetCore.Identity;
 using ReflectionIT.Mvc.Paging;
+using SnackHouse.Areas.Admin.Services;
 
 namespace SnackHouse
 {
@@ -45,6 +46,8 @@ namespace SnackHouse
 
             //Quando acontecer o erro 403 ele vai redirecionar para o caminho definido aqui
             services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
+
+            services.AddScoped<SalesReportService>();
 
             services.AddMemoryCache();
             services.AddSession();//incluir o serviço de sessão no estado da aplicação

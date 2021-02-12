@@ -184,7 +184,6 @@ namespace SnackHouse.Areas.Admin.Controllers
             {
                 Order = order,
                 OrderDetails = order.OrderDetails,
-                OrderTotal = order.TotalOrder
             };
 
             return View(orderSnackViewModel);
