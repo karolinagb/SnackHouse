@@ -56,8 +56,7 @@ Total de pedidos : @Model.TotalRecordCount
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SendDate)
-                @* Mostrar somente data sem hora: *@
-                @*@String.Format("{0:dd/MM/yyyy}", model.SendDate)*@
+                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeliveryDate)
@@ -97,10 +96,13 @@ Total de pedidos : @Model.TotalRecordCount
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SendDate)
+                    @*@Html.DisplayFor(modelItem => item.SendDate)*@
+                    @* Mostrar somente data sem hora: *@
+                    @String.Format("{0:dd/MM/yyyy}", item.SendDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeliveryDate)
+                    @*@Html.DisplayFor(modelItem => item.DeliveryDate)*@
+                    @String.Format("{0:dd/MM/yyyy}", item.DeliveryDate)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
