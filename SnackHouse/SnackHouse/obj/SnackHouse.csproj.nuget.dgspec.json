@@ -10,14 +10,15 @@
         "projectUniqueName": "C:\\projetos\\SnackHouse\\SnackHouse\\SnackHouse\\SnackHouse.csproj",
         "projectName": "SnackHouse",
         "projectPath": "C:\\projetos\\SnackHouse\\SnackHouse\\SnackHouse\\SnackHouse.csproj",
-        "packagesPath": "C:\\Users\\Karol\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Karolina\\.nuget\\packages\\",
         "outputPath": "C:\\projetos\\SnackHouse\\SnackHouse\\SnackHouse\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Karol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Karolina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
