@@ -19,8 +19,12 @@ namespace SnackHouse.Controllers
 
         public ActionResult Login(string url)
         {
+            var d1 = DateTime.Now;
+            var d2 = DateTime.Now;
+            TimeSpan time = d2 - d1;
             return View(new LoginViewModel()
             {
+                
                 URL = url
             });
         }
